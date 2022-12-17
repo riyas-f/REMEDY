@@ -12,7 +12,6 @@ class MedicineRecord(models.Model):
     def __str__(self):
         return self.medicine_name
 
-class MedicineDetails(models.Model):
     medicine_details=models.TextField()
 
     class Meta:

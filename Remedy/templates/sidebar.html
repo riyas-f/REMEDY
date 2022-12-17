@@ -13,7 +13,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">   
     <link rel="stylesheet" href="{% static 'css/side.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'images/fav.png' %}">
+    {% block link %}
 
+    {% endblock link %}
     <style> @import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap'); </style>
 </head>
 <body>
@@ -30,7 +32,7 @@
         
         <button class="openbtn" onclick="openNav()">☰</button>
       
-        <img class="img-fluid" src="{% static 'images/logo.png' %}" alt="" style="margin-left:20%;" width="35%" height="auto">
+        <img class="img-fluid" src="{% static 'images/logo.png' %}" alt="" style="margin-left:40%;" width="150px" height="auto">
       </div>
       </div>
 

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="side.css">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap'); </style>
+</head>
+<body>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="#">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="#">Medicine</a>
+        <a href="#">Tips</a>
+        <button class="submit">Log out</button>
+      </div>
+      
+      <div id="main">
+        <button class="openbtn" onclick="openNav()">☰</button>
+      </div>
+      <script>
+        function openNav() {
+          document.getElementById("mySidebar").style.width = "250px";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
+</body>
+</html>

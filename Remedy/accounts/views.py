@@ -28,10 +28,11 @@ def register(request):
     if request.method=="POST":
         first_name = request.POST['fname']
         last_name = request.POST['lname']
-        username = request.POST['email']
+        username = request.POST['num']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         email = request.POST['email']
+        
         if password1==password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request,"username already taken")

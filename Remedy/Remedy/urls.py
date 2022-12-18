@@ -20,5 +20,6 @@ urlpatterns = [
     path('tips/',include('tips.urls')),
     path('',include('accounts.urls')),
     path('',include('home.urls')),
+    path('',include('medicine.urls')),
     path('admin/', admin.site.urls),
 ]

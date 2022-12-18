@@ -4,12 +4,9 @@ from django.db import models
 
 class MedicineType(models.Model):
     type = models.CharField(max_length=100)
-
-class MedicineTime(models.Model):
-    time = models.TimeField()
-
     def __str__(self):
-        return str(self.time)
+        return self.type
+
 
 class MedicineName(models.Model):
     medicine_name=models.CharField(max_length=100)    
@@ -20,7 +17,7 @@ class MedicineName(models.Model):
         return self.medicine_name
 
 class MedicineRecord(models.Model):
-    medicine_name=models.ForeignKey(MedicineName,on_delete=models.PROTECT,related_name='+')
+    medicine_name=models.ForeignKey(MedicineName,on_delete=models.PROTECT,related_name='medicine_desc')
     medicine_details=models.TextField()
     class Meta:
         verbose_name_plural = "Medicine Details"
@@ -30,9 +27,11 @@ class MedicineRecord(models.Model):
 
 class SavedMedicines(models.Model):
     medicine_name=models.ForeignKey(MedicineName,on_delete=models.PROTECT,related_name='+')
-    time=models.ManyToManyField(MedicineTime)
+    time = models.TimeField()
     dosage = models.IntegerField()
-    timeof = models.BooleanField()
+    intake = models.BooleanField()
+    type = models.ForeignKey(MedicineType,on_delete=models.PROTECT,related_name='+')
+
 
     def __str__(self):
         return self.medicine_name

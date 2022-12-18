@@ -1,0 +1,192 @@
+{% extends 'sidebar.html' %}
+{% load static %}
+{% block link%}
+    <!--Stylesheets-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+    
+    <!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.1.js"
+    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+
+    <title>Remedy</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/fav.png' %}">
+
+{% endblock link%}
+
+{% block content %}
+    
+<div class="container">
+    <div class="col sub-page-1">
+        <h1 class="text-center">ADD MEDICINE</h1>
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <form name="register_patient" action="" method="POST" class="my-4 py-4" onsubmit="return handleData()">
+                    {% csrf_token %}
+                    <div>
+                        <div class="form-floating mb-3">
+                            
+                            <label for="floatingInput">Medicine Name</label>
+                        
+                        <select id="medicine" name="medicine" placeholder="Select Medicine">
+                            <option required></option>
+                            {% for medicine in medicines %}
+                            <option value={{medicine.id}} required>{{medicine.medicine_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <div class="row align-items-center">
+                            
+                            <div class="form-group mb-4 col-3">
+                                <label>Dosage</label>
+                                <select name='dosage' required>
+                                    <option required></option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                            
+                            
+                            
+                            
+                        </div>
+                    </div>
+
+
+                            <div class="form-floating mb-3">
+                        <select name="", id="" class="form-control" default="type" >
+                            <option selected>type</option>
+                            <option value="">Injections</option>
+                            <option value="">Unit</option>
+                            <option value="">Vaginal</option>
+                            <option value="">Tablet</option>
+                            <option value="">Pill</option>
+                            <option value="">Tablespoon</option>
+                            <option value="">Patch</option>
+                            <option value="">Pessary</option>
+                            <option value="">Application</option>
+                            <option value="">Drop</option>
+                            <option value="">Milligramme</option>
+                            <option value="">Capsule</option>
+                            <option value="">Piece</option>
+                            <option value="">Vaginal capsule</option>
+                            <option value="">Teaspoon</option>
+                            <option value="">Spray</option>
+                            <option value="">Tablet</option>
+                            <option value="">Pill</option>
+                            <option value="">Sachet</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-6 py-2">
+                        <label>In-take</In-take></label>
+                        <div style="display:flex">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                    id="inlineRadio1" value="Male" required>
+                                <label class="form-check-label" for="inlineRadio1">Before food</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                    id="inlineRadio2" value="Female" required>
+                                <label class="form-check-label" for="inlineRadio2">After food</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <label>Time scheduled</label>
+                        <div class="form mb-3 col-4">
+                            <input type="time" name="time" class="form-control" id="floatingInput"
+                                placeholder="time" required>
+                        </div>
+                </div>
+                        
+                            <!-- <div>
+                                <div class="form-floating mb-3">
+                                    <input type="name" name="name" class="form-control" id="floatingInput" placeholder="name"
+                                        required>
+                                    <label for="floatingInput">Patient Name</label>
+                                </div> -->
+                               
+                                <!-- <label>Next appointment date</label>
+                                <div class="form mb-3 col-5">
+                                    <input type="datetime-local" id="datefield" name="appoint_date" class="form-control"
+                                        id="floatingInput" placeholder="appoint_date" min="2022-11-10T12:00" required>
+                                </div>
+                            </div> -->
+                            
+                        <!-- <div class="form-floating mb-3">
+                            <textarea rows="5" cols="40" class="form-control" id="floatingInput" name="medicalCondition"
+                                placeholder="medical Conditions" required></textarea>
+                            <label for="floatingInput">Medical Conditions</label>
+                        </div> -->
+                        <!-- <div class="form-group mb-3">
+                            <label>Medicine</label>
+                            <select id="medicine" name="medicine" placeholder="Select Medicine">
+                                <option required></option>
+                                {% for medicine in medicines %}
+                                <option value={{medicine.id}} required>{{medicine.medicine_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div> -->
+                        <!-- <div>
+                            <div class="row align-items-center">
+                                
+                                <div class="form-group mb-4 col-3">
+                                    <label>Dosage</label>
+                                    <select name='dosage' required>
+                                        <option required></option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div> -->
+                                
+                                
+                                <!-- <div class="form-group mb-2 col-3" name="timeofday">
+                                    <div><label><input type=checkbox  name="timeofday[]" value=1>&nbsp;Morning</label></div>
+                                    <div><label><input type=checkbox  name="timeofday[]" value=2>&nbsp;Afternoon</label></div>
+                                    <div><label><input type=checkbox  name="timeofday[]" value=3>&nbsp;Night</label></div>
+                                </div> -->
+
+                                <!-- <div class="form-group mb-3 col-6" style="visibility:hidden; color:red; " id="chk_option_error">
+                                    Please select at least one option.
+                                    </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" id="phone" name="mobileNumber"
+                                placeholder="medical Conditions" pattern="[1-9]{1}[0-9]{9}" required>
+                            <label for="floatingInput">Mobile number</label>
+                        </div> -->
+
+                        <button type="submit" id="submit" class="btn btn-primary">Add</button>
+                        <br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- {% for message in messages %}
+    <script>alert("{{ message }}")</script>
+    {% endfor %}
+     -->
+    <!--Scripts-->
+    <script src="{% static 'js/register.js' %}"></script>
+
+{% endblock content %}

@@ -1,0 +1,105 @@
+
+                        <div class="form-floating mb-3">
+                            <input type="number" name="age" class="form-control" id="floatingInput" placeholder="age"
+                                min="1" max="125" required>
+                            <label for="floatingInput">Age</label>
+                        </div>
+                        <div class="row justify-content-between">
+                            <label>Date of Prescription</label>
+                            <div class="form mb-3 col-4">
+                                <input type="date" name="date" class="form-control" id="floatingInput"
+                                    placeholder="date" required>
+                            </div>
+                            <div>
+                                <label>Next appointment date</label>
+                                <div class="form mb-3 col-5">
+                                    <input type="datetime-local" id="datefield" name="appoint_date" class="form-control"
+                                        id="floatingInput" placeholder="appoint_date" min="2022-11-10T12:00" required>
+                                </div>
+                            </div>
+                            <div class="col-6 py-2">
+                                <label>Gender</label>
+                                <div style="display:flex">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio1" value="Male" required>
+                                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio2" value="Female" required>
+                                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio2" value="Other" required>
+                                        <label class="form-check-label" for="inlineRadio2">Other</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea rows="5" cols="40" class="form-control" id="floatingInput" name="medicalCondition"
+                                placeholder="medical Conditions" required></textarea>
+                            <label for="floatingInput">Medical Conditions</label>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Medicine</label>
+                            <select id="medicine" name="medicine" placeholder="Select Medicine">
+                                <option required></option>
+                                {% for medicine in medicines %}
+                                <option value={{medicine.id}} required>{{medicine.medicine_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div>
+                            <div class="row align-items-center">
+                                
+                                <div class="form-group mb-4 col-3">
+                                    <label>Dosage</label>
+                                    <select name='dosage' required>
+                                        <option required></option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                                
+                                
+                                <div class="form-group mb-2 col-3" name="timeofday">
+                                    <div><label><input type=checkbox  name="timeofday[]" value=1>&nbsp;Morning</label></div>
+                                    <div><label><input type=checkbox  name="timeofday[]" value=2>&nbsp;Afternoon</label></div>
+                                    <div><label><input type=checkbox  name="timeofday[]" value=3>&nbsp;Night</label></div>
+                                </div>
+
+                                <div class="form-group mb-3 col-6" style="visibility:hidden; color:red; " id="chk_option_error">
+                                    Please select at least one option.
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" id="phone" name="mobileNumber"
+                                placeholder="medical Conditions" pattern="[1-9]{1}[0-9]{9}" required>
+                            <label for="floatingInput">Mobile number</label>
+                        </div>
+
+                        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                        <br><br>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for message in messages %}
+    <script>alert("{{ message }}")</script>
+    {% endfor %}
+    
+    <!--Scripts-->
+    <script src="{% static 'js/register.js' %}"></script>
+
+</body>
+
+</html>

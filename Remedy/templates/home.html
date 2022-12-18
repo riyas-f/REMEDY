@@ -2,33 +2,45 @@
 
 {% block link%}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock link%}
 
 {% block content %}
 <div style="margin-left: 8px;margin-top: 15px;margin-right: 8px;margin-bottom: 8px;">
-<div class="card w-70" style="top: 10%;" >
+<div class="card w-" style="top: 10%;" >
     <div class="shadow card">
-    <h5 class="card-header"></h5>
+    {% for medicine in medicines %}
+    <a href='/addmed'><h5 class="card-header">{{medicine.medicine_name}}</h5></a>
     <div class="card-body">
-      <h5 class="card-title">Heading</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#">Read more</a>
-      <div class="container">
+      <!-- <h5 class="card-title">Heading</h5> -->
+      <p class="card-text">Dosage: {{medicine.dosage}} {{medicine.type}}</p>
+      {% if medicine.intake is True %}
+      <p class="card-text">In take: Before Food </p>
+      {% else %}
+      <p class="card-text">In take: After Food </p>
+      {% endif %}
+      <p class="card-text">Scheduled time: {{medicine.time}}</p>
+      <!-- <a href="#">Read more</a> -->
+      <!-- <div class="container">
         <h2>Simple Collapsible</h2>
-        <p>Click on the button to toggle between showing and hiding content.</p>
-        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+        <p>Click on the button to toggle between showing and hiding content.</p> -->
+        <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#demo"  style="background-color: #ac99ae; box-shadow: none; border: #ac99ae;">Details of {{medicine.medicine_name}}</button>
         <div id="demo" class="collapse">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        {% for desc in descs %}
+        
+        {% if medicine.medicine_name == desc.medicine_name %}
+        {{desc.medicine_details}}
+        {% endif %}
+        {% endfor %}
         </div>
       </div>
+    {% endfor %}
     </div>
+    
 </div>
 </div>
 </div>
- 
+<a href="addmed/"><button type="button" class="btn btn-primary" style="background-color: #ac99ae; box-shadow: none; border: #ac99ae;">Add Medicine</button></a>
 {% endblock content %}
